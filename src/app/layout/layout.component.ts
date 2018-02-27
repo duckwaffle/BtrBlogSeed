@@ -50,4 +50,5 @@ export class LayoutComponent {
 
   @Input() public infoAtRightMenu?: boolean = false;
   @Input() public showRightMenuButton?: boolean = false;
+  @Input() public showLogin? = false;
 }

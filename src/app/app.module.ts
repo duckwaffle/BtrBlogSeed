@@ -108,7 +108,8 @@ export function authFactory(platform: Platform, yoloAuth: YoloOidcAuthService, o
       useFactory: authFactory,
       deps: [Platform, YoloOidcAuthService, OidcAuthService ]
     }, // Dynamically choose between Yolo on web and Oidc on Hybrid
-    // { provide: AUTH_SERVICE, useClass: YoloOidcAuthService, deps: [OidcAuthService] }, // If want to use Credential Management (YOLO) falling back to OidcAuthService
+    // { provide: AUTH_SERVICE, useClass: YoloOidcAuthService, deps: [OidcAuthService] },
+    // If want to use Credential Management (YOLO) falling back to OidcAuthService
     // { provide: AUTH_SERVICE, useClass: OidcAuthService }, // If want to use an OpenID/OAuth2 Auth Provider (generically)
     // { provide: AUTH_SERVICE, useClass: FirebaseAuthService }, //If want to use Firebase as an Auth Provider
 

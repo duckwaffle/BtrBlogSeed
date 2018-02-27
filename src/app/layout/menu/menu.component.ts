@@ -35,6 +35,8 @@ export class MenuComponent implements OnInit, AfterViewInit {
 
   @Input() public infoAtRightMenu?: boolean = false;
 
+  @Input() public showLogin?: true;
+
   constructor(
     public platform: Platform,
     public menu: MenuController,

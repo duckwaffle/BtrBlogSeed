@@ -2,8 +2,19 @@ import { LeftMenuService, RightMenuService } from './../../shared/services/menu.
 import { UserinfoComponent } from './userinfo/userinfo.component';
 import { InfoComponent } from './info/info.component';
 import { PopoverController, Platform, MenuController } from 'ionic-angular';
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input, AfterContentInit, ApplicationRef, NgZone, ChangeDetectionStrategy, Inject } from '@angular/core';
-import { AUTH_SERVICE, BaseAuthService } from "../../shared/services/base-auth.service";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  Input,
+  AfterContentInit,
+  ApplicationRef,
+  NgZone,
+  ChangeDetectionStrategy,
+  Inject } from '@angular/core';
+import { AUTH_SERVICE, BaseAuthService } from '../../shared/services/base-auth.service';
 
 
 @Component({
@@ -12,18 +23,26 @@ import { AUTH_SERVICE, BaseAuthService } from "../../shared/services/base-auth.s
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
+  @Input() public infoAtRightMenu? = false;
+
+  @Input() public showLeftMenuButton? = true;
+
+  @Input() public showRightMenuButton? = true;
+
+  @Input() public showLogin? = true;
+
   _name: string;
 
   get name() {
     if (this._name) {
-      let splittedName = this._name.split(' ');
+      const splittedName = this._name.split(' ');
       if (splittedName) {
-        let initialName = splittedName[0];
+        const initialName = splittedName[0];
         return initialName;
-      }else{
+      }else {
         return this._name;
       }
-    }else{
+    }else {
       return 'Unidentified';
     }
   }
@@ -31,17 +50,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.authService.auth.subscribe(user => {
       this._name = user.identity.user.name;
-    })
+    });
   }
 
-
-  @Input() public infoAtRightMenu?: boolean = false;
-
-  @Input() public showLeftMenuButton?: boolean = true;
-
-  @Input() public showRightMenuButton?: boolean = true;
-
-  constructor(public menu: MenuController, public leftMenuService: LeftMenuService, public rightMenuService: RightMenuService, private popoverController: PopoverController, @Inject(AUTH_SERVICE) private authService: BaseAuthService<any>) {
+  constructor(
+    public menu: MenuController,
+    public leftMenuService: LeftMenuService,
+    public rightMenuService: RightMenuService,
+    private popoverController: PopoverController,
+    @Inject(AUTH_SERVICE) private authService: BaseAuthService<any>) {
   }
 
   toggleMenu() {

@@ -19,7 +19,7 @@
 
 
     <div *ngIf="!infoAtRightMenu">
-      <button ion-button (click)="presentUserInfoPopover($event)">
+      <button *ngIf="showLogin" ion-button (click)="presentUserInfoPopover($event)">
         <ion-icon name="person"></ion-icon>
         <span invisible-to="mobile">{{name}}</span>
       </button>

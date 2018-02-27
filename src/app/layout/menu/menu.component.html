@@ -26,7 +26,7 @@
     <!-- when="(min-width: 1440px)" -->
     <ion-content main #content>
 
-      <seed-header [showRightMenuButton]="showRightMenuButton" [infoAtRightMenu]="infoAtRightMenu">
+      <seed-header [showRightMenuButton]="showRightMenuButton" [infoAtRightMenu]="infoAtRightMenu" [showLogin]="showLogin">
       </seed-header>
 
       <div id="appcontent">
@@ -64,7 +64,7 @@
 
       <ion-content>
         <ion-list>
-          <ion-item>
+          <ion-item *ngIf="showLogin">
             <seed-userinfo></seed-userinfo>
           </ion-item>
           <ion-item>
